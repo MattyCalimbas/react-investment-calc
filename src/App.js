@@ -1,14 +1,18 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import Header from './components/Header/Header';
 import UserInput from './components/UserInput/UserInput';
 
 function App() {
-  const [results, setResults] = useState(null);
-  const calculateHandler = (userInput) => {
-    // Should be triggered when form is submitted
-    // You might not directly want to bind it to the submit event on the form though...
+  const [userInput, setUserInput] = useState(null);
 
-    const yearlyData = []; // per-year results
+  const calculateHandler = (userInput) => {
+    setUserInput(userInput)
+  };
+
+  //Using Derived State: yearlyData is based on userInput state.
+  const yearlyData = []; // per-year results
+
+  if (userInput) {
 
     let currentSavings = +userInput['current-savings']; // feel free to change the shape of this input object!
     const yearlyContribution = +userInput['yearly-contribution']; // as mentioned: feel free to change the shape...
@@ -27,15 +31,13 @@ function App() {
         yearlyContribution: yearlyContribution,
       });
     }
-
-    setResults(yearlyData);
-  };
+  }
 
   return (
     <div>
       <Header />
-      <UserInput onCalc={calculateHandler}/>
-      
+      <UserInput onCalc={calculateHandler} />
+
       {/* Todo: Show below table conditionally (only once result data is available) */}
       {/* Show fallback text if no data is available */}
 
