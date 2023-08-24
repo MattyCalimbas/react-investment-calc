@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Header from './components/Header/Header';
 import UserInput from './components/UserInput/UserInput';
+import ResultsTable from './components/ResultsTable/ResultsTable';
 
 function App() {
   const [userInput, setUserInput] = useState(null);
@@ -38,29 +39,8 @@ function App() {
       <Header />
       <UserInput onCalc={calculateHandler} />
 
-      {/* Todo: Show below table conditionally (only once result data is available) */}
-      {/* Show fallback text if no data is available */}
-
-      <table className="result">
-        <thead>
-          <tr>
-            <th>Year</th>
-            <th>Total Savings</th>
-            <th>Interest (Year)</th>
-            <th>Total Interest</th>
-            <th>Invested Capital</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>YEAR NUMBER</td>
-            <td>TOTAL SAVINGS END OF YEAR</td>
-            <td>INTEREST GAINED IN YEAR</td>
-            <td>TOTAL INTEREST GAINED</td>
-            <td>TOTAL INVESTED CAPITAL</td>
-          </tr>
-        </tbody>
-      </table>
+      {!userInput && <p>No Investment Calculated Yet</p>}
+      {userInput && <ResultsTable data={yearlyData} initialInvestment={userInput['current-savings']} />}
     </div>
   );
 }
