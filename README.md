@@ -1,5 +1,6 @@
 # React Investment Calculator
 
+Deployed Link: https://mattycalimbas.github.io/react-investment-calc/
 
 Welcome to the React Investment Calculator! This application allows users to calculate and visualize potential returns on their investments based on various parameters. Whether you're planning for retirement, saving up for a big purchase, or just curious about the power of compounding, this app has you covered.
 
@@ -12,8 +13,6 @@ Welcome to the React Investment Calculator! This application allows users to cal
 - **Visualizations:** Visualize how your investment grows over time with interactive charts. This provides a clear understanding of the potential benefits of different investment strategies.
 
 - **Comparison:** Compare different scenarios by adjusting the inputs. Easily see the impact of changing interest rates, investment durations, and more.
-
-- **Responsive Design:** Whether you're using a desktop, tablet, or smartphone, the app's responsive design ensures a seamless experience on any device.
 
 ## Getting Started
 
