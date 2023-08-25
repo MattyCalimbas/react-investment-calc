@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import classes from './UserInput.module.css'
 
 const initialUserInput = {
     'current-savings': 10000, 
@@ -23,16 +24,18 @@ const UserInput = (props) => {
     const inputChangeHandler = (input, value) => {
         setUserInput((prevInput) => {
             // special JavaScript syntax where you can dynamically access a property name by wrapping the identifier we want to access with square brackets so you dont set the property named input but rather the property whose name is STORED in input
+
+            // NOTE: the + converts the string value to a number
             return {
                 ...prevInput,
-                [input]: value,
+                [input]: +value, 
             }
         })
     };
 
     return (
-        <form onSubmit={submitHandler} className="form">
-            <div className="input-group">
+        <form onSubmit={submitHandler} className={classes.form}>
+            <div className={classes['input-group']}>
                 <p>
                     <label htmlFor="current-savings">Current Savings ($)</label>
                     <input onChange={(event) => inputChangeHandler('current-savings', event.target.value)} type="number" id="current-savings" value={userInput['current-savings']} />
@@ -42,7 +45,7 @@ const UserInput = (props) => {
                     <input onChange={(event) => inputChangeHandler('yearly-contribution', event.target.value)} type="number" id="yearly-contribution" value={userInput['yearly-contributions']}/>
                 </p>
             </div>
-            <div className="input-group">
+            <div className={classes['input-group']}>
                 <p>
                     <label htmlFor="expected-return">
                         Expected Interest (%, per year)
@@ -54,11 +57,11 @@ const UserInput = (props) => {
                     <input onChange={(event) => inputChangeHandler('duration', event.target.value)} type="number" id="duration" value={userInput['duration']} />
                 </p>
             </div>
-            <p className="actions">
-                <button onClick={resetHandler} type="reset" className="buttonAlt">
+            <p className={classes.actions}>
+                <button onClick={resetHandler} type="reset" className={classes.buttonAlt}>
                     Reset
                 </button>
-                <button type="submit" className="button">
+                <button type="submit" className={classes.button}>
                     Calculate
                 </button>
             </p>
